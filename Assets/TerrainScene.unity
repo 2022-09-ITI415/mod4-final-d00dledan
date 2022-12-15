@@ -289,7 +289,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 621216320}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -6.2, z: 0}
   m_LocalScale: {x: 1.2, y: 1.8, z: 1.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -782,6 +782,7 @@ MonoBehaviour:
   controller: {fileID: 2039263689}
   speed: 20
   gravity: -19.62
+  jumpHeight: 3
   groundCheck: {fileID: 1879894849}
   groundDistance: 0.4
   groundMask:
