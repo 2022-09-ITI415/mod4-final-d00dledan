@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 public class InteractScript : MonoBehaviour
 {
 
-    public float interactDistance = 5f;
+    public float interactDistance = 1f;
 
   
 
