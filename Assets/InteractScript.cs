@@ -1,14 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.ProBuilder.Shapes;
 using UnityEngine.UIElements;
 
 public class InteractScript : MonoBehaviour
 {
 
-    public float interactDistance = 1f;
+    public float interactDistance = 5f;
+   
 
-  
+
+
+
 
     // Update is called once per frame
     void Update()
@@ -17,11 +22,29 @@ public class InteractScript : MonoBehaviour
         {
             Ray ray = new Ray(transform.position, transform.forward);
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, interactDistance)) {
+            if (Physics.Raycast(ray, out hit, interactDistance)) 
+            {
                 if (hit.collider.CompareTag("Door"))
-                { 
-                    hit.collider.transform.parent.GetComponent<Door>().ChangeDoorState();
+                {
+                    Door doorScript = hit.collider.transform.parent.GetComponent<Door>();
+                    if (doorScript == null)
+                        return;
+
+                    if (Inventory.Keys[doorScript.index] == true) {
+                        doorScript.ChangeDoorState();
+                    }
+
+
                 }
+                else if (hit.collider.CompareTag("Key"))
+                {
+                    Inventory.Keys[hit.collider.GetComponent<Key>().index] = true;
+                    
+                    Destroy(hit.collider.gameObject);
+                }
+
+
+
             } 
 
         }
