@@ -11,6 +11,10 @@ public class Door : MonoBehaviour
     public float doorCloseAngle = 0f;
     public float smooth = 2f;
 
+    [SerializeField] private AudioSource doorOpenAudioSource = null;
+    
+    
+
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +25,9 @@ public class Door : MonoBehaviour
     public void ChangeDoorState() 
     {
         open = !open;
+        doorOpenAudioSource.Play();
+        
+        
     }
 
     // Update is called once per frame

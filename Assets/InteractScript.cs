@@ -8,7 +8,9 @@ using UnityEngine.UIElements;
 public class InteractScript : MonoBehaviour
 {
 
-    public float interactDistance = 5f;
+    public float interactDistance = 5f; 
+    [SerializeField] private AudioSource doorOpenAudioSource = null;
+    
    
 
 
@@ -39,7 +41,8 @@ public class InteractScript : MonoBehaviour
                 else if (hit.collider.CompareTag("Key"))
                 {
                     Inventory.Keys[hit.collider.GetComponent<Key>().index] = true;
-                    
+                    doorOpenAudioSource.Play();
+
                     Destroy(hit.collider.gameObject);
                 }
 
